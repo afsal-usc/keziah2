@@ -24,7 +24,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6 bg-[#F6EBDF]/60">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Title */}
@@ -36,7 +36,8 @@ export default function FeaturesSection() {
             className="space-y-8"
           >
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-stone-900 text-balance">
-              Does this sound <span className="italic text-sage-500">familiar</span>
+              Does this sound{" "}
+              <span className="italic text-sage-500">familiar</span>
             </h2>
             <div className="h-px w-32 bg-sage-300" />
           </motion.div>

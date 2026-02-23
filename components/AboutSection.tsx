@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-16 md:py-24 px-6 bg-stone-50 overflow-hidden">
+    <section
+      id="about"
+      className="py-16 md:py-24 px-6 bg-[#F2F5F3] overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left Column - Text */}
@@ -25,22 +28,35 @@ export default function AboutSection() {
               </p>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-stone-900">
                 Healing begins in <br />
-                <span className="italic text-sage-600">safety & connection.</span>
+                <span className="italic text-sage-600">
+                  safety & connection.
+                </span>
               </h2>
             </div>
 
             <div className="space-y-6 text-lg text-stone-600 leading-relaxed">
               <p>
-                Hi, I'm Keziah, Counselling Psychologist. I believe healing begins when you feel truly seen, held, and free from judgment. My work goes beyond advice, it's about understanding patterns, regulating the nervous system, healing attachment wounds, and reconnecting with a secure sense of self.
+                Hi, I'm Keziah, Counselling Psychologist. I believe healing
+                begins when you feel truly seen, held, and free from judgment.
+                My work goes beyond advice, it's about understanding patterns,
+                regulating the nervous system, healing attachment wounds, and
+                reconnecting with a secure sense of self.
               </p>
               <p>
-                I take an integrative approach, drawing from Eye Movement Desensitization and Reprocessing (EMDR), Internal Family Systems (IFS), Somatic Therapy, Brainspotting, Trauma Focused - Cognitive Behaviour Therapy, Dialectical Behaviour Therapy and Solution-Focused Brief Therapy.
+                I take an integrative approach, drawing from Eye Movement
+                Desensitization and Reprocessing (EMDR), Internal Family Systems
+                (IFS), Somatic Therapy, Brainspotting, Trauma Focused -
+                Cognitive Behaviour Therapy, Dialectical Behaviour Therapy and
+                Solution-Focused Brief Therapy.
               </p>
               <p>
-                Integrating Nature is also part of my work, as time with trees and the natural world can deeply support regulation and restoration.
+                Integrating Nature is also part of my work, as time with trees
+                and the natural world can deeply support regulation and
+                restoration.
               </p>
               <p className="font-medium text-stone-800">
-                Therapy with me is a journey of coming home to your body, your story, and yourself.
+                Therapy with me is a journey of coming home to your body, your
+                story, and yourself.
               </p>
             </div>
 

@@ -13,6 +13,7 @@ export default function ConnectSection() {
   };
 
   return (
+    <>
     <section
       id="connect"
       className="py-16 md:py-24 px-6 bg-sage-50 overflow-hidden"
@@ -143,14 +144,23 @@ export default function ConnectSection() {
             </form>
           </div>
 
-          <div aria-live="polite" className="text-sm text-stone-700 text-center h-5">
+          <div
+            aria-live="polite"
+            className="text-sm text-stone-700 text-center h-5"
+          >
             {statusMessage}
           </div>
         </motion.div>
       </div>
+    </section>
 
-      {/* Footer Section */}
-      <div className="max-w-4xl mx-auto mt-16 md:mt-24">
+    {/* Footer — full-width container so bg spans edge to edge */}
+    <footer
+      className="w-full bg-[#1B1917] py-16 md:py-24"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -158,12 +168,12 @@ export default function ConnectSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-8 text-center"
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-stone-900">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-white">
             Ready to begin your <br />
-            <span className="italic text-sage-600">healing journey?</span>
+            <span className="italic text-[#9CB1A3]">healing journey?</span>
           </h2>
 
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#A0A0A0] max-w-2xl mx-auto leading-relaxed">
             Reach out on your preferred platform, and let's start this
             transformative work together. I'm here to support you every step of
             the way.
@@ -174,7 +184,7 @@ export default function ConnectSection() {
               href="http://wa.me/919361777322"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-sage-500 text-white px-8 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-sage-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sage-50 transition-colors shadow-lg shadow-sage-900/20"
+              className="group inline-flex items-center gap-2 bg-[#4A6D5E] text-white px-8 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-[#5a7d6e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1917] transition-colors"
             >
               BOOK A SESSION
               <ArrowRight
@@ -185,7 +195,7 @@ export default function ConnectSection() {
 
             <a
               href="mailto:hello@keziahverghese.com"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium tracking-wide text-stone-700 border border-stone-300 hover:border-sage-400 hover:text-sage-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sage-50 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium tracking-wide text-white border border-white/30 hover:border-white/50 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1917] transition-colors"
             >
               <Mail size={18} />
               EMAIL ME
@@ -197,7 +207,7 @@ export default function ConnectSection() {
               href="https://www.instagram.com/therapywithkez/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-500 hover:text-sage-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sage-50 rounded-full"
+              className="text-white/70 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1917] rounded-full"
               aria-label="Instagram"
             >
               <Instagram size={24} />
@@ -206,14 +216,14 @@ export default function ConnectSection() {
               href="https://www.linkedin.com/in/keziah-verghese-749965182/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-500 hover:text-sage-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sage-50 rounded-full"
+              className="text-white/70 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1917] rounded-full"
               aria-label="LinkedIn"
             >
               <Linkedin size={24} />
             </a>
           </div>
 
-          <div className="pt-16 border-t border-stone-300 text-stone-500 text-sm">
+          <div className="pt-16 border-t border-white/20 text-[#A0A0A0] text-sm">
             <p>
               &copy; {new Date().getFullYear()} Keziah Verghese. All rights
               reserved.
@@ -221,6 +231,7 @@ export default function ConnectSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </footer>
+    </>
   );
 }
