@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 type TextItem = {
   type: "text";
@@ -13,10 +13,8 @@ type TextItem = {
 
 type MediaItem = {
   type: "media";
-  author: string;
-  location: string;
-  tone: string;
-  video: boolean;
+  imageSrc: string;
+  alt: string;
 };
 
 type BentoItem = TextItem | MediaItem;
@@ -57,28 +55,15 @@ const MediaCard = ({ item, index }: { item: MediaItem; index: number }) => (
     viewport={{ once: true, margin: "-40px" }}
     transition={{ delay: index * 0.06, duration: 0.5 }}
     className="relative rounded-2xl overflow-hidden shadow-sm aspect-square break-inside-avoid"
-    role="img"
-    aria-label={`${item.author} video testimonial placeholder`}
+    aria-label="Testimonial imagery"
   >
-    <div className={cn("absolute inset-0", item.tone)} />
-    <div className="absolute inset-0 bg-linear-to-br from-white/30 to-transparent" />
-    <div className="absolute inset-0 bg-linear-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
-    {item.video ? (
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span
-          className="w-14 h-14 rounded-full bg-white/80 text-stone-900 inline-flex items-center justify-center shadow-lg"
-          aria-hidden="true"
-        >
-          <Play size={22} fill="currentColor" />
-        </span>
-      </div>
-    ) : null}
-    <div className="absolute bottom-4 left-4 right-4">
-      <p className="text-stone-50 font-semibold text-lg">{item.author}</p>
-      {item.location && (
-        <p className="text-stone-200 text-sm">- {item.location}</p>
-      )}
-    </div>
+    <Image
+      src={item.imageSrc}
+      alt={item.alt}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
   </motion.div>
 );
 
@@ -93,10 +78,9 @@ export default function TestimonialSection() {
     },
     {
       type: "media",
-      author: "Sreshta Jain",
-      location: "United States",
-      tone: "bg-clay-300",
-      video: true,
+      imageSrc:
+        "https://images.unsplash.com/photo-1506126613408-eca67ce52496?auto=format&fit=crop&w=600&q=80",
+      alt: "Person in meditation pose, calm and peaceful",
     },
     {
       type: "text",
@@ -107,10 +91,9 @@ export default function TestimonialSection() {
     },
     {
       type: "media",
-      author: "Divya Jain",
-      location: "Delhi",
-      tone: "bg-sage-300",
-      video: true,
+      imageSrc:
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
+      alt: "Hands holding a warm drink, cozy and calm",
     },
     {
       type: "text",
@@ -128,17 +111,22 @@ export default function TestimonialSection() {
     },
     {
       type: "media",
-      author: "Maria James",
-      location: "Chennai",
-      tone: "bg-sage-200",
-      video: true,
+      imageSrc:
+        "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=600&q=80",
+      alt: "Serene natural landscape with soft light",
     },
     {
       type: "media",
-      author: "Anonymous",
-      location: "",
-      tone: "bg-stone-300",
-      video: false,
+      imageSrc:
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
+      alt: "Quiet workspace with plants and natural light",
+    },
+    {
+      type: "text",
+      quote:
+        "Working with Ms. Kezia has been a turning point for me. I came in carrying years of unprocessed grief and didn't even know where to begin. She created such a safe, non-judgmental space that I slowly began to open up. The somatic work helped me understand how my body holds onto pain. I leave each session feeling lighter, more grounded, and genuinely hopeful about my healing journey.",
+      author: "Priya R.",
+      location: "Bangalore",
     },
   ];
 
@@ -162,7 +150,7 @@ export default function TestimonialSection() {
         {/* CSS columns masonry: items pack vertically, no gaps */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-5">
           {items.map((item, index) => (
-            <div key={`${item.author}-${index}`} className="mb-4 md:mb-5">
+            <div key={`${item.type}-${index}`} className="mb-4 md:mb-5">
               {item.type === "text" ? (
                 <TextCard item={item} index={index} />
               ) : (
