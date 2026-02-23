@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -20,29 +20,15 @@ export default function HeroSection() {
             className="space-y-10"
           >
             <div className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="flex items-center gap-3"
-              >
-                <span className="h-px w-12 bg-sage-400"></span>
-                <p className="text-xs font-bold tracking-[0.25em] uppercase text-sage-600">
-                  Trauma Focused Therapist & Coach
-                </p>
-              </motion.div>
-
-              <h1 className="font-serif leading-[1.1]">
-                <span className="block text-3xl text-stone-400 mb-2">
-                  From post-traumatic stress
-                </span>
-                <span className="block text-5xl text-stone-900">
-                  to <span className="italic text-sage-600">post-traumatic growth.</span>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-stone-900 text-balance max-w-2xl">
+                Trauma Focused Therapist &{" "}
+                <span className="italic text-sage-600">
+                  Nervous System Regulation Coach
                 </span>
               </h1>
 
               <p className="text-base md:text-lg text-stone-600 max-w-md leading-relaxed">
-                You don't have to figure it all out alone. specialized support for nervous system regulation, attachment healing, and nature-based therapy.
+                Tired of coping? Let's work on healing.
               </p>
             </div>
 
@@ -50,22 +36,23 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-wrap gap-4"
             >
               <a
                 href="http://wa.me/919361777322"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 bg-stone-900 text-stone-50 px-8 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-sage-600 transition-all shadow-xl shadow-stone-900/10"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium tracking-wide text-stone-900 bg-sage-100 border border-sage-200 hover:bg-sage-200 hover:border-sage-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F9F8F6] transition-colors"
               >
-                BOOK A SESSION
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                Book a Discovery Call
               </a>
               <a
-                href="#about"
-                className="flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-medium tracking-wide text-stone-900 border border-stone-200 hover:border-sage-400 hover:text-sage-600 transition-all"
+                href="http://wa.me/919361777322"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium tracking-wide text-stone-900 bg-clay-200 border border-clay-300 hover:bg-clay-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F9F8F6] transition-colors"
               >
-                LEARN MORE
+                Join the Community (WhatsApp)
               </a>
             </motion.div>
           </motion.div>
@@ -77,9 +64,9 @@ export default function HeroSection() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[500px] aspect-[4/5]">
-              <div className="absolute inset-0 bg-sage-200 rounded-[2rem] rotate-6 transform translate-x-4 translate-y-4 -z-10" />
-              <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl shadow-stone-900/10">
+            <div className="relative w-full max-w-[500px] aspect-4/5">
+              <div className="absolute inset-0 bg-sage-200 rounded-4xl rotate-6 transform translate-x-4 translate-y-4 -z-10" />
+              <div className="relative w-full h-full rounded-4xl overflow-hidden shadow-2xl shadow-stone-900/10">
                 <Image
                   src="/keziah-hero.jpg"
                   alt="Keziah Verghese"
@@ -96,7 +83,8 @@ export default function HeroSection() {
                   className="absolute bottom-8 left-8 right-8 glass p-6 rounded-xl border border-white/40 shadow-lg backdrop-blur-md"
                 >
                   <p className="font-serif text-xl text-stone-900 italic">
-                    "Healing is not about fixing yourself, it's about reconnecting with who you truly are."
+                    "Healing is not about fixing yourself, it's about
+                    reconnecting with who you truly are."
                   </p>
                 </motion.div>
               </div>

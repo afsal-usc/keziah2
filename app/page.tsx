@@ -13,10 +13,10 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <ServicesCarousel />
         <ProblemStatement />
         <FeaturesSection />
         <AboutSection />
-        <ServicesCarousel />
         <TestimonialSection />
         <ConnectSection />
       </main>
