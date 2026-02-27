@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,12 +13,18 @@ const instrumentSerif = Instrument_Serif({
   weight: ["400"],
 });
 
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Keziah Verghese - Trauma Focused Therapist and Coach",
-  description: "You don't have to figure it all out alone. Psychologist specializing in nervous system regulation, attachment healing, and nature-based therapy.",
+  description:
+    "You don't have to figure it all out alone. Psychologist specializing in nervous system regulation, attachment healing, and nature-based therapy.",
   icons: {
-    icon: '/icon.svg',
-    apple: '/apple-icon.svg',
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
   },
 };
 
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${instrumentSerif.variable} antialiased`}
+        className={`${inter.variable} ${instrumentSerif.variable} ${playfairDisplay.variable} antialiased`}
       >
         {children}
       </body>

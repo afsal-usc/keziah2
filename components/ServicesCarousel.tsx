@@ -50,6 +50,7 @@ export default function ServicesCarousel() {
         "Individual sessions tailored to your history, nervous system, and healing goals.",
       color: "bg-sage-100",
       imageTone: "bg-sage-200",
+      imageSrc: "/therapy-session.jpg",
     },
     {
       title: "Group Therapy",
@@ -57,6 +58,7 @@ export default function ServicesCarousel() {
         "Small, supportive circles to process, reflect, and practice emotional regulation together.",
       color: "bg-clay-100",
       imageTone: "bg-clay-200",
+      imageSrc: "/gallery-imgs/PXL_20240426_055724479.jpg",
     },
     {
       title: "Outbound Training",
@@ -64,6 +66,7 @@ export default function ServicesCarousel() {
         "Experiential outdoor sessions that build resilience, trust, and embodied confidence.",
       color: "bg-stone-200",
       imageTone: "bg-stone-200",
+      imageSrc: "/gallery-imgs/PXL_20241017_055805667.PORTRAIT.jpg",
     },
   ];
 
@@ -131,19 +134,29 @@ export default function ServicesCarousel() {
                   )}
                 >
                   <div className="space-y-6">
-                    <div
-                      className={cn(
-                        "relative w-full h-48 rounded-2xl overflow-hidden",
-                        service.imageTone,
-                      )}
-                      role="img"
-                      aria-label={`${service.title} photo placeholder`}
-                    >
-                      <div className="absolute inset-0 bg-linear-to-br from-white/40 to-transparent" />
-                      <div className="absolute bottom-4 left-4 text-xs font-bold tracking-[0.2em] uppercase text-stone-700">
-                        Photo Placeholder
+                    {service.imageSrc ? (
+                      <div className="relative w-full h-48 rounded-2xl overflow-hidden">
+                        <img
+                          src={service.imageSrc}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                    </div>
+                    ) : (
+                      <div
+                        className={cn(
+                          "relative w-full h-48 rounded-2xl overflow-hidden",
+                          service.imageTone,
+                        )}
+                        role="img"
+                        aria-label={`${service.title} photo placeholder`}
+                      >
+                        <div className="absolute inset-0 bg-linear-to-br from-white/40 to-transparent" />
+                        <div className="absolute bottom-4 left-4 text-xs font-bold tracking-[0.2em] uppercase text-stone-700">
+                          Photo Placeholder
+                        </div>
+                      </div>
+                    )}
                     <h3 className="font-serif text-3xl text-stone-900">
                       {service.title}
                     </h3>

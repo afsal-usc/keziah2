@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function Hero10() {
   return (
@@ -19,44 +19,31 @@ export default function Hero10() {
           transition={{ duration: 0.6 }}
           className="space-y-7"
         >
-          <p className="text-xs uppercase tracking-[0.34em] text-stone-600">
-            Friendly + Professional
-          </p>
           <h1 className="font-serif text-4xl leading-tight text-stone-900 md:text-6xl">
-            Professional support for your
-            <span className="ml-2 italic text-sage-700">
-              healing journey
+            Trauma Focused Therapist &{" "}
+            <span className="italic text-sage-700">
+              Nervous System Regulation Coach
             </span>
-            .
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-stone-700">
-            Structured, compassionate trauma-focused care that helps you build
-            regulation, trust, and emotional steadiness over time.
+            Tired of coping? Let&apos;s work on healing.
           </p>
-          <div className="rounded-2xl border border-stone-300/70 bg-white/70 p-4 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-sm text-stone-700">
-              <ShieldCheck size={16} className="text-sage-700" />
-              Safe, trauma-informed, and personalized
-            </div>
-          </div>
           <div className="flex flex-wrap gap-3">
             <a
               href="http://wa.me/919361777322"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-stone-900 px-7 py-3.5 text-sm font-medium text-white hover:bg-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-700"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-sage-100 border border-sage-200 px-7 py-3.5 text-sm font-medium tracking-wide text-stone-900 hover:bg-sage-200 hover:border-sage-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 transition-colors"
             >
               Book a Discovery Call
-              <ArrowRight
-                size={16}
-                className="transition-transform group-hover:translate-x-1"
-              />
             </a>
             <a
-              href="mailto:hello@keziahverghese.com"
-              className="inline-flex items-center gap-2 rounded-full border border-stone-500 px-7 py-3.5 text-sm font-medium text-stone-800 hover:border-sage-700 hover:text-sage-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-500"
+              href="http://wa.me/919361777322"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-clay-200 border border-clay-300 px-7 py-3.5 text-sm font-medium tracking-wide text-stone-900 hover:bg-clay-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay-300 transition-colors"
             >
-              Email Me
+              Join the Community (WhatsApp)
             </a>
           </div>
         </motion.div>
@@ -68,22 +55,28 @@ export default function Hero10() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative min-h-[560px]"
         >
-          <div className="absolute left-0 top-10 w-[72%] rounded-4xl border border-stone-300/70 bg-white p-3 shadow-xl shadow-stone-900/10">
-            <img
-              src="https://placehold.co/1000x760/E6DDD2/1C1917?text=Primary+Placeholder"
-              alt="Primary placeholder image"
-              className="h-72 w-full rounded-3xl object-cover md:h-80"
-            />
+          <div className="absolute left-0 top-10 w-[72%] rounded-4xl border border-stone-300/70 bg-white p-3 shadow-xl shadow-stone-900/10 overflow-hidden">
+            <div className="relative h-72 w-full md:h-80 rounded-3xl overflow-hidden">
+              <Image
+                src="/keziah-hero.jpg"
+                alt="Keziah Verghese"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 72vw, 36vw"
+                priority
+              />
+            </div>
           </div>
-          <div className="absolute bottom-10 right-0 w-[62%] rounded-4xl border border-stone-300/70 bg-[#DCE5DE] p-3 shadow-xl shadow-stone-900/10">
-            <img
-              src="https://placehold.co/900x760/CEDBCD/1C1917?text=Secondary+Placeholder"
-              alt="Secondary placeholder image"
-              className="h-64 w-full rounded-3xl object-cover md:h-72"
-            />
-          </div>
-          <div className="absolute right-[16%] top-[45%] rounded-full border border-stone-400/60 bg-white/85 px-5 py-2.5 text-sm font-medium text-stone-700 backdrop-blur-sm">
-            Online & In-Person
+          <div className="absolute bottom-10 right-0 w-[62%] rounded-4xl border border-stone-300/70 bg-[#DCE5DE] p-3 shadow-xl shadow-stone-900/10 overflow-hidden">
+            <div className="relative h-64 w-full md:h-72 rounded-3xl overflow-hidden">
+              <Image
+                src="/gallery-imgs/PXL_20241017_055805667.PORTRAIT.jpg"
+                alt="Keziah Verghese"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 62vw, 31vw"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
