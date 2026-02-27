@@ -129,7 +129,7 @@ export default function TestimonialSection() {
         {/* Horizontal scrolling cards */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth px-6 pb-4 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth px-6 py-2 snap-x snap-mandatory scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {testimonials.map((testimonial, index) => (
