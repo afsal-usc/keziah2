@@ -34,7 +34,7 @@ export default function AboutSection() {
               </h2>
             </div>
 
-            <div className="space-y-6 text-lg text-stone-600 leading-relaxed">
+            <div className="space-y-6 text-lg text-stone-600 leading-relaxed text-justify">
               <p>
                 Hi, I'm Keziah, Counselling Psychologist. I believe healing
                 begins when you feel truly seen, held, and free from judgment.

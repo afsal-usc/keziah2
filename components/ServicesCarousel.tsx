@@ -104,7 +104,7 @@ export default function ServicesCarousel() {
     {
       title: "1:1 Therapy",
       description:
-        "Individual sessions tailored to your history, nervous system, and healing goals.",
+        "A structured individual session designed to reduce psychological distress, build healthier coping strategies, and improve overall functioning.",
       color: "bg-sage-100",
       imageTone: "bg-sage-200",
       imageSrc: "/therapy-session.jpg",
@@ -112,7 +112,7 @@ export default function ServicesCarousel() {
     {
       title: "Group Therapy",
       description:
-        "Small, supportive circles to process, reflect, and practice emotional regulation together.",
+        "A guided space that promotes healing through connection and guided reflection.",
       color: "bg-clay-100",
       imageTone: "bg-clay-200",
       imageSrc: "/gallery-imgs/PXL_20240426_055724479.jpg",
@@ -120,7 +120,7 @@ export default function ServicesCarousel() {
     {
       title: "Outbound Training",
       description:
-        "Experiential outdoor sessions that build resilience, trust, and embodied confidence.",
+        "An experiential learning program to build resilience, teamwork, and self-awareness through structured activities.",
       color: "bg-stone-200",
       imageTone: "bg-stone-200",
       imageSrc: "/gallery-imgs/PXL_20241017_055805667.PORTRAIT.jpg",
@@ -189,7 +189,10 @@ export default function ServicesCarousel() {
         </div>
 
         {/* Desktop: carousel */}
-        <div className="hidden md:block overflow-hidden -mx-6 px-6" ref={emblaRef}>
+        <div
+          className="hidden md:block overflow-hidden -mx-6 px-6"
+          ref={emblaRef}
+        >
           <div className="flex gap-8">
             {services.map((service, index) => (
               <motion.div

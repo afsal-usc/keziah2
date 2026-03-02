@@ -89,8 +89,7 @@ export default function FeaturesSection() {
             <div className="h-px w-32 bg-sage-400/50" />
             <p className="text-stone-600 text-lg leading-relaxed max-w-md">
               These are common experiences for people carrying unprocessed
-              trauma. You are not broken — your nervous system is protecting
-              you.
+              trauma. You are not broken, your nervous system is protecting you.
             </p>
           </motion.div>
 
