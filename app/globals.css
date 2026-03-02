@@ -95,16 +95,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Marquee animation for Gallery */
+/* Marquee animation for Gallery - GPU-accelerated for seamless loop */
 @keyframes marquee {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
 }

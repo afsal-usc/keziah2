@@ -65,10 +65,10 @@ export default function GallerySection() {
       {/* Marquee track */}
       <div className="group relative">
         {/* Fade masks on edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-sage-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-sage-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-linear-to-r from-sage-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-linear-to-l from-sage-50 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee group-hover:[animation-play-state:paused]">
+        <div className="inline-flex animate-marquee group-hover:[animation-play-state:paused]">
           {/* Two identical strips for seamless looping */}
           {[0, 1].map((copy) => (
             <div

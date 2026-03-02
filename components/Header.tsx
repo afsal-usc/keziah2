@@ -38,8 +38,13 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="font-serif text-2xl md:text-3xl tracking-wide text-stone-900 hover:text-sage-600 transition-colors">
-          KEZIAH VERGHESE
+        <a href="#" className="flex flex-col text-stone-900 hover:text-sage-600 transition-colors">
+          <span className="font-serif text-2xl md:text-3xl tracking-wide">
+            KEZIAH VERGHESE
+          </span>
+          <span className="text-[10px] md:text-xs font-medium tracking-widest text-stone-500 uppercase mt-0.5">
+            Psychologist
+          </span>
         </a>
 
         {/* Desktop Navigation */}

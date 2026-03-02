@@ -6,6 +6,63 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Service = {
+  title: string;
+  description: string;
+  color: string;
+  imageTone: string;
+  imageSrc: string;
+};
+
+const ServiceCard = ({ service }: { service: Service }) => (
+  <div
+    className={cn(
+      "h-full p-10 rounded-3xl flex flex-col justify-between group transition-colors duration-500",
+      service.color,
+    )}
+  >
+    <div className="space-y-6">
+      {service.imageSrc ? (
+        <div className="relative w-full h-48 rounded-2xl overflow-hidden">
+          <img
+            src={service.imageSrc}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "relative w-full h-48 rounded-2xl overflow-hidden",
+            service.imageTone,
+          )}
+          role="img"
+          aria-label={`${service.title} photo placeholder`}
+        >
+          <div className="absolute inset-0 bg-linear-to-br from-white/40 to-transparent" />
+          <div className="absolute bottom-4 left-4 text-xs font-bold tracking-[0.2em] uppercase text-stone-700">
+            Photo Placeholder
+          </div>
+        </div>
+      )}
+      <h3 className="font-serif text-3xl text-stone-900">{service.title}</h3>
+      <p className="text-stone-600 leading-relaxed">{service.description}</p>
+    </div>
+
+    <div className="mt-10 pt-10 border-t border-stone-900/10">
+      <a
+        href="http://wa.me/919361777322"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-stone-900 group-hover:gap-4 transition-[gap] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
+      >
+        Book a Session
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </div>
+);
+
 export default function ServicesCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -116,7 +173,23 @@ export default function ServicesCarousel() {
           </div> */}
         </div>
 
-        <div className="overflow-hidden -mx-6 px-6" ref={emblaRef}>
+        {/* Mobile: stacked layout - all cards visible */}
+        <div className="flex flex-col gap-6 md:hidden">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+            >
+              <ServiceCard service={service} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: carousel */}
+        <div className="hidden md:block overflow-hidden -mx-6 px-6" ref={emblaRef}>
           <div className="flex gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -125,58 +198,9 @@ export default function ServicesCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="flex-[0_0_100%] md:flex-[0_0_400px] min-w-0"
+                className="flex-[0_0_400px] min-w-0"
               >
-                <div
-                  className={cn(
-                    "h-full p-10 rounded-3xl flex flex-col justify-between group transition-colors duration-500",
-                    service.color,
-                  )}
-                >
-                  <div className="space-y-6">
-                    {service.imageSrc ? (
-                      <div className="relative w-full h-48 rounded-2xl overflow-hidden">
-                        <img
-                          src={service.imageSrc}
-                          alt={service.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className={cn(
-                          "relative w-full h-48 rounded-2xl overflow-hidden",
-                          service.imageTone,
-                        )}
-                        role="img"
-                        aria-label={`${service.title} photo placeholder`}
-                      >
-                        <div className="absolute inset-0 bg-linear-to-br from-white/40 to-transparent" />
-                        <div className="absolute bottom-4 left-4 text-xs font-bold tracking-[0.2em] uppercase text-stone-700">
-                          Photo Placeholder
-                        </div>
-                      </div>
-                    )}
-                    <h3 className="font-serif text-3xl text-stone-900">
-                      {service.title}
-                    </h3>
-                    <p className="text-stone-600 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-10 pt-10 border-t border-stone-900/10">
-                    <a
-                      href="http://wa.me/919361777322"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-stone-900 group-hover:gap-4 transition-[gap] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
-                    >
-                      Book a Session
-                      <ArrowRight size={16} />
-                    </a>
-                  </div>
-                </div>
+                <ServiceCard service={service} />
               </motion.div>
             ))}
           </div>
