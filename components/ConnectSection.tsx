@@ -1,15 +1,62 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { Instagram, Linkedin, Mail, ArrowRight, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  contactFormSchema,
+  type ContactFormValues,
+} from "@/lib/validations/contact";
 
 export default function ConnectSection() {
-  const [statusMessage, setStatusMessage] = useState("");
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setStatusMessage("Form submitted. This is a mock form for now.");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      subject: "",
+      note: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
+    setStatusMessage(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message. Please try again.");
+      }
+
+      setStatusMessage({
+        type: "success",
+        text: "Thank you! Your message has been sent successfully.",
+      });
+      reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatusMessage({
+        type: "error",
+        text: "Something went wrong. Please try emailing us directly.",
+      });
+    }
   };
 
   return (
@@ -36,7 +83,11 @@ export default function ConnectSection() {
                 </h2>
               </div>
 
-              <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+              <form
+                className="space-y-6"
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+              >
                 <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label
@@ -47,14 +98,19 @@ export default function ConnectSection() {
                     </label>
                     <input
                       id="contact-name"
-                      name="name"
                       type="text"
                       autoComplete="name"
-                      required
-                      aria-required="true"
-                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400"
+                      disabled={isSubmitting}
+                      {...register("name")}
+                      aria-invalid={errors.name ? "true" : "false"}
+                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 disabled:opacity-50"
                       placeholder="Enter your name…"
                     />
+                    {errors.name && (
+                      <p className="text-sm text-red-500">
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label
@@ -65,15 +121,20 @@ export default function ConnectSection() {
                     </label>
                     <input
                       id="contact-phone"
-                      name="phone"
                       type="tel"
                       inputMode="tel"
                       autoComplete="tel"
-                      required
-                      aria-required="true"
-                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400"
+                      disabled={isSubmitting}
+                      {...register("phone")}
+                      aria-invalid={errors.phone ? "true" : "false"}
+                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 disabled:opacity-50"
                       placeholder="Enter your phone number…"
                     />
+                    {errors.phone && (
+                      <p className="text-sm text-red-500">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -87,15 +148,20 @@ export default function ConnectSection() {
                     </label>
                     <input
                       id="contact-email"
-                      name="email"
                       type="email"
                       autoComplete="email"
                       spellCheck={false}
-                      required
-                      aria-required="true"
-                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400"
+                      disabled={isSubmitting}
+                      {...register("email")}
+                      aria-invalid={errors.email ? "true" : "false"}
+                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 disabled:opacity-50"
                       placeholder="Enter your email…"
                     />
+                    {errors.email && (
+                      <p className="text-sm text-red-500">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label
@@ -106,14 +172,19 @@ export default function ConnectSection() {
                     </label>
                     <input
                       id="contact-subject"
-                      name="subject"
                       type="text"
                       autoComplete="off"
-                      required
-                      aria-required="true"
-                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400"
+                      disabled={isSubmitting}
+                      {...register("subject")}
+                      aria-invalid={errors.subject ? "true" : "false"}
+                      className="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 disabled:opacity-50"
                       placeholder="Enter subject…"
                     />
+                    {errors.subject && (
+                      <p className="text-sm text-red-500">
+                        {errors.subject.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -126,29 +197,42 @@ export default function ConnectSection() {
                   </label>
                   <textarea
                     id="contact-note"
-                    name="note"
-                    required
-                    aria-required="true"
                     rows={5}
-                    className="w-full px-4 py-3 rounded-2xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 resize-y"
+                    disabled={isSubmitting}
+                    {...register("note")}
+                    aria-invalid={errors.note ? "true" : "false"}
+                    className="w-full px-4 py-3 rounded-2xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:border-sage-400 resize-y disabled:opacity-50"
                     placeholder="Share your message…"
                   />
+                  {errors.note && (
+                    <p className="text-sm text-red-500">
+                      {errors.note.message}
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full h-12 rounded-xl bg-sage-500 text-white text-sm font-semibold tracking-[0.2em] uppercase hover:bg-sage-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full h-12 rounded-xl bg-sage-500 text-white flex items-center justify-center gap-2 text-sm font-semibold tracking-[0.2em] uppercase hover:bg-sage-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white transition-colors disabled:opacity-70"
                 >
-                  Submit
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Submit"
+                  )}
                 </button>
               </form>
             </div>
 
             <div
               aria-live="polite"
-              className="text-sm text-stone-700 text-center h-5"
+              className={`text-sm text-center h-5 font-medium ${statusMessage?.type === "error" ? "text-red-600" : "text-sage-700"}`}
             >
-              {statusMessage}
+              {statusMessage?.text}
             </div>
           </motion.div>
         </div>
@@ -194,7 +278,7 @@ export default function ConnectSection() {
               </a>
 
               <a
-                href="mailto:hello@keziahverghese.com"
+                href="mailto:keziahverghese05@gmail.com"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium tracking-wide text-white border border-white/30 hover:border-white/50 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1917] transition-colors"
               >
                 <Mail size={18} />
