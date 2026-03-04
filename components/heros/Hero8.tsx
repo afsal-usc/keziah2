@@ -50,7 +50,7 @@ export default function Hero8() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-clay-200 border border-clay-300 px-7 py-3.5 text-sm font-medium tracking-wide text-stone-900 hover:bg-clay-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay-300 transition-colors"
             >
-              Join the Community (WhatsApp)
+              Join the Community
             </a>
           </div>
         </motion.div>

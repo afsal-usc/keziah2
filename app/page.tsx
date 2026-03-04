@@ -17,9 +17,9 @@ export default function Home() {
         <ServicesCarousel />
         <ProblemStatement />
         <FeaturesSection />
+        <GallerySection />
         <AboutSection />
         <TestimonialSection />
-        <GallerySection />
         <ConnectSection />
       </main>
     </>
