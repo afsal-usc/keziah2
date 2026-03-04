@@ -1,10 +1,11 @@
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
+import Hero8 from "@/components/heros/Hero8";
 import ProblemStatement from "@/components/ProblemStatement";
 import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesCarousel from "@/components/ServicesCarousel";
 import TestimonialSection from "@/components/TestimonialSection";
+import GallerySection from "@/components/GallerySection";
 import ConnectSection from "@/components/ConnectSection";
 
 export default function Home() {
@@ -12,11 +13,12 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <Hero8 />
+        <ServicesCarousel />
         <ProblemStatement />
         <FeaturesSection />
         <AboutSection />
-        <ServicesCarousel />
+        <GallerySection />
         <TestimonialSection />
         <ConnectSection />
       </main>

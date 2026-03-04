@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,17 +13,17 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#testimonials', label: 'Testimonials' },
-    { href: '#connect', label: 'Connect' },
+    { href: "#about", label: "About" },
+    { href: "#services", label: "Services" },
+    { href: "#testimonials", label: "Testimonials" },
+    { href: "#connect", label: "Connect" },
   ];
 
   return (
@@ -33,13 +33,24 @@ export default function Header() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "glass py-4" : "bg-transparent py-6"
+        scrolled ? "glass py-4" : "bg-transparent py-6",
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="font-serif text-2xl md:text-3xl tracking-wide text-stone-900 hover:text-sage-600 transition-colors">
-          KEZIAH VERGHESE
+        <a
+          href="#"
+          className="flex flex-col text-stone-900 hover:text-sage-600 transition-colors"
+        >
+          <span className="font-serif text-2xl md:text-3xl tracking-wide">
+            KEZIAH VERGHESE
+          </span>
+          <span
+            className="text-sm md:text-base italic text-stone-500 mt-0.5"
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          >
+            Psychologist
+          </span>
         </a>
 
         {/* Desktop Navigation */}
@@ -81,7 +92,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass border-t border-stone-200 overflow-hidden"
           >
@@ -111,4 +122,3 @@ export default function Header() {
     </motion.header>
   );
 }
-
